@@ -11,6 +11,7 @@
     "test": "npm-run-all test:*",
     "test:html": "html-validate *.html",
     "test:js": "eslint js/",
+    "test:scss": "stylelint sass/",
     "build": "npm-run-all build:* test",
     "build:sass": "sass --style=compressed --no-source-map sass:css",
     "build:autoprefixer": "postcss css/*.css --use autoprefixer -d css",
@@ -37,6 +38,9 @@
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1",
     "prettier": "2.8.1",
-    "sass": "^1.55.0"
+    "sass": "^1.55.0",
+    "stylelint": "^14.16.1",
+    "stylelint-config-standard-scss": "^6.1.0",
+    "stylelint-scss": "^4.3.0"
   }
 }
