@@ -118,13 +118,13 @@ function generateTags(){
   /* START LOOP: for every article: */
 
   for(let article of articles){
-    console.log(articles);
+    console.log(article);
 
 
     /* find tags wrapper */
 
     const tagsWrapper = article.querySelectorAll(optArticleTagsSelector);
-    console.log(tagsWrapper);
+
 
     /* make html variable with empty string */
 
@@ -133,45 +133,47 @@ function generateTags(){
     /* get tags from data-tags attribute */
 
     const articleTags = article.getAttribute('data-tags');
+
     console.log('articleTags', articleTags);
 
     /* split tags into array */
 
     const articleTagsArray = articleTags.split(' ');
-    console.log(articleTagsArray);
+    console.log('split tags', articleTagsArray);
 
     /* START LOOP: for each tag */
 
     for(let tag of articleTagsArray){
-      console.log('click', tag);
 
-
+      console.log('tag', tag);
       /* generate HTML of the link */
 
-      const linkHTML = '<li><a href="#' + articleTagsArray + '"></a></li>';
+      /*<div class="post-tags">
+          <p><strong>Tags:</strong></p>
+          <ul class="list list-horizontal">
+            <li><a href="#tag-design">design</a></li>
+            <li><a href="#tag-tutorials">tutorials</a></li>
+          </ul>
+        </div> */
 
-
-      console.log('link was clicked', linkHTML);
+      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      console.log('linkhtml' , tag);
 
       /* add generated code to html variable */
 
       html = html + linkHTML;
-
       console.log('html', html);
 
-      /* END LOOP: for each tag */
 
+      /* END LOOP: for each tag */
     }
 
     /* insert HTML of all the links into the tags wrapper */
 
     for(let tagWrapper of tagsWrapper){
       tagWrapper.insertAdjacentHTML('afterbegin', html);
+      console.log('generate links of tag', tagWrapper);
     }
-
-
-    console.log('tagsWrapper', tagsWrapper);
-
   /* END LOOP: for every article: */
   }
 }
@@ -188,6 +190,7 @@ function tagClickHandler(event){
   /* make a new constant "tag" and extract tag from the "href" constant */
 
   const tag = href.replace('#tag-', '');
+  console.log('tag', tag);
 
   /* find all tag links with class active */
 
@@ -209,7 +212,7 @@ function tagClickHandler(event){
 
   /* execute function "generateTitleLinks" with article selector as argument */
 
-  
+
 
 }
 
