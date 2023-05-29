@@ -1,3 +1,5 @@
+'use strict';
+
 const titleClickHandler = function(event){
   event.preventDefault();
   const clickedElement = this;
@@ -92,14 +94,6 @@ function generateTitleLinks(customSelector = ''){
     console.log('link was clicked', linkHTML);
 
 
-    /* insert link into titleList */
-
-    const innerHTML = document.querySelector('.titles');
-
-    innerHTML.insertAdjacentHTML('afterbegin', linkHTML);
-
-    console.log(innerHTML);
-
     /* insert link into html variable */
     html = html + linkHTML;
 
@@ -107,7 +101,10 @@ function generateTitleLinks(customSelector = ''){
 
   }
 
-  titleList.innerHTML = html;
+  /* insert link into titleList */
+
+  titleList.insertAdjacentHTML('afterbegin',html);
+
 
   const links = document.querySelectorAll('.titles a');
 
@@ -247,10 +244,10 @@ function tagClickHandler(event){
 
   event.preventDefault();
 
-
   /* make new constant named "clickedElement" and give it the value of "this" */
 
   const clickedElement = this;
+  console.log('clicked element', clickedElement);
 
   /* make a new constant "href" and read the attribute "href" of the clicked element */
 
